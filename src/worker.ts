@@ -110,7 +110,9 @@ export default {
 			const lang = requestUrl.searchParams.get('lang') || undefined;
 			
 			// Parse new optional parameters
-			const timeout = parseNumberParam(requestUrl.searchParams.get('timeout'));
+			const timeout = parseNumberParam(requestUrl.searchParams.get('timeout') || requestUrl.searchParams.get('operationTimeout');
+			// 支持 followRedirects 参数
+      const followRedirects = parseBooleanParam(requestUrl.searchParams.get('followRedirects'));
 			const contentLengthLimit = parseNumberParam(requestUrl.searchParams.get('contentLengthLimit'));
 			const contentLengthRequired = parseBooleanParam(requestUrl.searchParams.get('contentLengthRequired'));
 			const userAgent = requestUrl.searchParams.get('userAgent') || undefined;
